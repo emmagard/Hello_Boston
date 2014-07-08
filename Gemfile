@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+
 gem 'rails', '4.1.2'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -16,9 +17,10 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-#gem 'instagram'
-#gem 'twitter'
-#gem 'feedjira'
+gem 'instagram'
+gem 'twitter'
+gem 'feedjira'
+gem 'wunderground'
 
 
 group :development, :test do
@@ -27,6 +29,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :test do
