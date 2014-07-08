@@ -1,0 +1,16 @@
+
+<ul>
+
+        <% @entry.map do |entry| %>
+
+    <li> <%= link_to entry.title, entry.url %> </li>
+
+        <% end %>
+
+        <% @pics.map do |pic| %>
+         <div> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "360x360"), pic['link'] %> </div>
+        <% end %>
+
+
+
+</ul>
