@@ -1,16 +1,11 @@
+<%= link_to 'Add Post', new_post_path %>
 
-<ul>
+<ul class='posts'>
 
-        <% @entry.map do |entry| %>
-
-    <li> <%= link_to entry.title, entry.url %> </li>
-
-        <% end %>
-
-        <% @pics.map do |pic| %>
-         <div> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "360x360"), pic['link'] %> </div>
-        <% end %>
-
-
+<% @posts.each do |post| %>
+  <li> <%= post.title %> </li>
+  <li> <%= post.content %> </li>
+  <li> <%= post.url %> </li>
+<% end %>
 
 </ul>

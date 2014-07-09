@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @feed = Feedjira::Feed.fetch_and_parse feed_url
     @entry = @feed.entries
     @pics = Instagram.tag_recent_media('boston')
-
+    @posts = Post.all
   end
 
   private
