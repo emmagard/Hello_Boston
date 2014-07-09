@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @feed = Feedjira::Feed.fetch_and_parse feed_url
     @entry = @feed.entries
-    @pics = Instagram.tag_recent_media('boston')
+    @pics = Instagram.tag_recent_media('boston').values_at(0...6)
     @posts = Post.all
   end
 
