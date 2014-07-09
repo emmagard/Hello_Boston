@@ -1,4 +1,4 @@
-class CollectionItemsController < ApplicationController
+class HomeController < ApplicationController
 
   def index
     @feed = Feedjira::Feed.fetch_and_parse feed_url
