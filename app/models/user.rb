@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   has_many :posts
+  has_many :comments
+
   validates :username, presence: true
   validates :username, uniqueness: true, case_sensitive: false
 
