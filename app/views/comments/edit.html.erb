@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+
+  <%= form_for @comment, url: post_comment_path do |f| %>
+  <%= f.label :content, 'Your Comment' %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+
+  <% end %>
+
+<% end %>

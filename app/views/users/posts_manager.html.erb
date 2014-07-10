@@ -1,9 +1,16 @@
 <div class='my_posts'>
 
 <h1>My Posts</h1>
+
+<% if @posts.present? == false %>
+  <p> There are no posts to manage... </p>
+  <p> <%= link_to 'Add some posts!', new_post_path %> </p>
+<% end %>
+
 <ul>
 <% @posts.each do |post| %>
-  <li> <%= link_to 'Edit ', edit_post_path(post) %><%= post.title %> </li>
+  <li> <%= link_to 'Edit ', edit_post_path(post) %><%= post.title %>
+  <%= link_to '|Delete|', post_path(post), method: :delete, data: {confirm: 'Are you sure?'} %> </li>
        <small><%= post.content %><br></small>
        <small><%= post.url %></small>
 <% end %>

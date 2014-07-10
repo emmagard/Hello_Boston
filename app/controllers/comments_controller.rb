@@ -25,13 +25,24 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
   end
 
   def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to users_comments_manager_path(current_user)
+    else
+      render :edit
+    end
   end
 
   def destroy
-
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      redirect_to users_comments_manager_path(current_user)
+      flash[:success] = "Your bookmark has been deleted!"
+    end
   end
 
   private

@@ -2,10 +2,16 @@
 
 <h1>My Comments</h1>
 
+<% if @comments.present? == false %>
+  <p> There are no comments to manage... </p>
+<% end %>
+
   <ul>
     <% @comments.each do |comment| %>
-      Post Title: <%= comment.post.title %><br>
-      <small><%= comment.content %><br></small>
+      From Post Title: <%= comment.post.title %><br>
+      <%= link_to '|Edit|', edit_post_comment_path(comment.post_id, comment) %>
+      <%= link_to '|Delete|', post_comment_path(comment.post_id, comment), method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= comment.content %><br>
     <% end %>
 
   </ul>
