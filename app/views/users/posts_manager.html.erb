@@ -1,8 +1,9 @@
 <div class='my_posts'>
 
+<h1>My Posts</h1>
 <ul>
 <% @posts.each do |post| %>
-  <li> <%= post.title %> </li>
+  <li> <%= link_to 'Edit ', edit_post_path(post) %><%= post.title %> </li>
        <small><%= post.content %><br></small>
        <small><%= post.url %></small>
 <% end %>

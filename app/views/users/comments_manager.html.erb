@@ -1,0 +1,15 @@
+<div class='my_comments'>
+
+<h1>My Comments</h1>
+
+  <ul>
+    <% @comments.each do |comment| %>
+      Post Title: <%= comment.post.title %><br>
+      <small><%= comment.content %><br></small>
+    <% end %>
+
+  </ul>
+
+
+
+</div>

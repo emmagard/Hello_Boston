@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+
+  <%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.label :url, 'Url' %>
+  <%= f.text_field :url %>
+  <%= f.submit %>
+
+  <% end %>
+
+<% end %>
