@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @pics = Instagram.tag_recent_media('boston').values_at(0...6)
     @posts = Post.all
     @post = Post.find_by(params[:id])
-    @post.user = current_user
+    #@post.user = current_user
 
   end
 
