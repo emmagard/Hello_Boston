@@ -11,6 +11,26 @@
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
   <div class='weather'>
+    <tr>
+      <td>
+        <% boston_now = Weather.boston_conditions %>
+        <%= image_tag(boston_now["icon_url"]) %>
+        <%= boston_now["weather"] %>
+        <%= boston_now["temp_f"] %>
+
+      </td>
+        <% boston_later = Weather.boston_forecast %>
+        <%= image_tag(boston_later["icon_url"]) %>
+        High: <%= boston_later["high"]["fahrenheit"] %>
+        Low: <%= boston_later["low"]["fahrenheit"] %><br>
+        Tomorrow
+
+        <!-- how do I say- from the hash where period = 1 etc.. -->
+
+      <td>
+      </td>
+      </tr>
+    </tr>
   </div>
 
   <div class='posts'>
