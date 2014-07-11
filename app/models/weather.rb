@@ -7,7 +7,7 @@ class Weather
   end
 
   def self.boston_forecast
-    @w_api.forecast_for("MA", "Boston")["forecast"]["simpleforecast"]["forecastday"][0]
+    @w_api.forecast_for("MA", "Boston")["forecast"]["simpleforecast"]["forecastday"]
   end
 
 end

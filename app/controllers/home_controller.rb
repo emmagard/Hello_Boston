@@ -4,9 +4,8 @@ class HomeController < ApplicationController
     @feed = Feedjira::Feed.fetch_and_parse feed_url
     @entry = @feed.entries
     @pics = Instagram.tag_recent_media('boston').values_at(0...6)
-    @posts = Post.all
+    @posts = Post.limit(3)
     @post = Post.find_by(params[:id])
-    #@post.user = current_user
 
   end
 

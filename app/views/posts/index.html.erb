@@ -1,0 +1,13 @@
+<h1>Post Board</h1>
+<%= link_to 'Back to Homepage', root_path %>
+
+<ul>
+  <% @posts.each do |post| %>
+  <li> <%= post.title %> </li>
+    <small> <%= post.content %> </small><br>
+    <small> <%= post.url %> </small><br>
+    <small> <%= post.user.username %> </small><br>
+    <small> <%= post.created_at %> </small><br>
+    <%= link_to 'Comments', post_comments_path(post) %><br><br>
+  <% end %>
+</ul>

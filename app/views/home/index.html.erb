@@ -17,23 +17,25 @@
         <%= image_tag(boston_now["icon_url"]) %>
         <%= boston_now["weather"] %>
         <%= boston_now["temp_f"] %>
-
       </td>
         <% boston_later = Weather.boston_forecast %>
-        <%= image_tag(boston_later["icon_url"]) %>
-        High: <%= boston_later["high"]["fahrenheit"] %>
-        Low: <%= boston_later["low"]["fahrenheit"] %><br>
-        Tomorrow
-
-        <!-- how do I say- from the hash where period = 1 etc.. -->
-
+        <%= image_tag(boston_later[1]["icon_url"]) %>
+        High: <%= boston_later[1]["high"]["fahrenheit"] %>
+        Low: <%= boston_later[1]["low"]["fahrenheit"] %>
+        <%= boston_later[1]["date"]["weekday"] %>
       <td>
+        <%= image_tag(boston_later[2]["icon_url"]) %>
+        High: <%= boston_later[2]["high"]["fahrenheit"] %>
+        Low: <%= boston_later[2]["low"]["fahrenheit"] %>
+        <%= boston_later[2]["date"]["weekday"] %>
       </td>
       </tr>
     </tr>
   </div>
 
   <div class='posts'>
+  <h1>Post Board</h1>
+  <h3> <%= link_to 'view all posts', posts_path %> </h3>
     <ul>
       <% @posts.each do |post| %>
       <li> <%= post.title %> </li>
@@ -41,7 +43,7 @@
         <small> <%= post.url %> </small><br>
         <small> <%= post.user.username %> </small><br>
         <small> <%= post.created_at %> </small><br>
-        <%= link_to 'Comments', post_comments_path(post) %>
+        <%= link_to 'Comments', post_comments_path(post) %><br><br>
       <% end %>
     </ul>
   </div>
@@ -54,8 +56,9 @@
   </div>
 
   <div class='articles'>
-    <% @entry.map do |entry| %>
+    <% @entry.each do |entry| %>
     <li> <%= link_to entry.title, entry.url %> </li>
+      <small> <%=entry.summary%> </small>
     <% end %>
   </div>
 
