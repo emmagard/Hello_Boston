@@ -13,21 +13,21 @@
   <div class='weather'>
     <tr>
       <td>
-        <% boston_now = Weather.boston_conditions %>
-        <%= image_tag(boston_now["icon_url"]) %>
-        <%= boston_now["weather"] %>
-        <%= boston_now["temp_f"] %>
+        <% boston_current = Weather.boston_conditions %>
+        <%= image_tag(boston_current["icon_url"]) %>
+        <%= boston_current["weather"] %>
+        <%= boston_current["temp_f"] %>
       </td>
-        <% boston_later = Weather.boston_forecast %>
-        <%= image_tag(boston_later[1]["icon_url"]) %>
-        High: <%= boston_later[1]["high"]["fahrenheit"] %>
-        Low: <%= boston_later[1]["low"]["fahrenheit"] %>
-        <%= boston_later[1]["date"]["weekday"] %>
+        <% boston_future = Weather.boston_forecast %>
+        <%= image_tag(boston_future[1]["icon_url"]) %>
+        High: <%= boston_future[1]["high"]["fahrenheit"] %>
+        Low: <%= boston_future[1]["low"]["fahrenheit"] %>
+        <%= boston_future[1]["date"]["weekday"] %>
       <td>
-        <%= image_tag(boston_later[2]["icon_url"]) %>
-        High: <%= boston_later[2]["high"]["fahrenheit"] %>
-        Low: <%= boston_later[2]["low"]["fahrenheit"] %>
-        <%= boston_later[2]["date"]["weekday"] %>
+        <%= image_tag(boston_future[2]["icon_url"]) %>
+        High: <%= boston_future[2]["high"]["fahrenheit"] %>
+        Low: <%= boston_future[2]["low"]["fahrenheit"] %>
+        <%= boston_future[2]["date"]["weekday"] %>
       </td>
       </tr>
     </tr>
@@ -38,19 +38,19 @@
   <h3> <%= link_to 'view all posts', posts_path %> </h3>
     <ul>
       <% @posts.each do |post| %>
-      <li> <%= post.title %> </li>
-        <small> <%= post.content %> </small><br>
-        <small> <%= post.url %> </small><br>
+      <li> <%= link_to post.title, post_path(post) %> </li>
+        <small> <%= truncate(post.content, length: 100, separator: ' ') %> </small><br>
         <small> <%= post.user.username %> </small><br>
-        <small> <%= post.created_at %> </small><br>
-        <%= link_to 'Comments', post_comments_path(post) %><br><br>
+        <small> <%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %> </small><br>
+        <%= link_to 'Comments', post_comments_path(post) %>
+        <%= post.comments.count %><br><br>
       <% end %>
     </ul>
   </div>
 
   <div class='instagram'>
     <% @pics.map do |pic| %>
-    <td> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "360x360"), pic['link'] %>
+    <td> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "150x150"), pic['link'] %>
     </td>
     <% end %>
   </div>
