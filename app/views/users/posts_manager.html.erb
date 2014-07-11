@@ -2,6 +2,8 @@
 
 <h1>My Posts</h1>
 
+<%= link_to 'Back to Homepage', root_path %>
+
 <% if @posts.present? == false %>
   <p> There are no posts to manage... </p>
   <p> <%= link_to 'Add some posts!', new_post_path %> </p>
