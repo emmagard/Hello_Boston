@@ -1,2 +1,1 @@
-This website is meant to be an at-a-glance resource representing a day in the city of Boston. You will find public posts from Instagram, Twitter, and other news outlets all in one place! As a signed in user you will be able to submit your own url posts and vote on your favorite ones.
-
+"Hello, Boston" is a community website for the city. There is a posting board for memebers to talk amongst themselves, a photo area that streams in instagram photos that are tagged with boston, an articles section, and a little weather to round things out. Sign-in or sign-up on the homepage to get started.
