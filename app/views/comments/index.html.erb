@@ -1,20 +1,27 @@
-<h2> <%= @post.title %> <br>
-     <%= @post.content %> <br>
-     <%= @post.url %>
-</h2>
+<div class='container'>
+  <div class="page-header">
+    <h2>Post: <%= @post.title %></h2>
+    <button type="button" class="btn btn-default"><%= link_to 'Back to Homepage', root_path %></button>
+    <button type="button" class="btn btn-default"><%=link_to 'Back to All Posts', posts_path%></button>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
 
-<%= link_to 'Back to Homepage', root_path %>
 
-<%= link_to 'Add Comment', new_post_comment_path %>
+      <p><%= @post.content %></p> <br><br>
+      <button type="button" class="btn btn-default"><%= link_to 'Add Comment', new_post_comment_path %></button><br><br>
 
-<% if @comments.present? == false %>
-  <p> there's no comments here yet. write a comment </p>
-<% end %>
+      <% if @comments.present? == false %>
+        <h3> there's no comments here yet. write a comment </h3>
+      <% end %>
 
-<ul>
-    <% @comments.each do |comment| %>
-      <%= comment.content %>
-      <%= comment.created_at %>
-      <%= comment.user.username %>
-    <% end %>
-</ul>
+      <ul>
+        <% @comments.each do |comment| %>
+          <li><%= comment.content %></li><br>
+          <small>Comment from: <%= comment.user.username %> Created on: <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+          </small><br><br>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

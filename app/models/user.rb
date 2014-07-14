@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, case_sensitive: false
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
   #added to customize :username in devise
   def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
@@ -19,5 +19,4 @@ class User < ActiveRecord::Base
         where(conditions).first
       end
     end
-
 end

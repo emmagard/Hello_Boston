@@ -1,12 +1,16 @@
-<% if user_signed_in? %>
+<div class='text-center'>
 
-  <%= form_for @post do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.submit %>
+  <h2>Edit Your Post!</h2>
+  <% if user_signed_in? %>
+
+    <%= form_for @post do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br><br>
+    <%= f.submit %>
+
+    <% end %>
 
   <% end %>
-
-<% end %>
+</div>

@@ -1,83 +1,103 @@
-<div class="container">
-<div class="jumbotron">
-<div class="text-center"><h1>Hello, Boston!</h1></div>
-</div>
-
 <% if user_signed_in? == false %>
-  <%= link_to 'User Login', new_user_session_path %>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class='text-center'>
+        <h2>Hello, Boston!</h2>
+        <button type="button" class="btn btn-default"><%= link_to 'Please Log In', new_user_session_path %></button>
+      </div>
+    </div>
+  </div>>
+  <div class='text-center'><%=image_tag('http://i.imgur.com/ZcJmC0Z.jpg', size: '600x600')%>
+  </div>
 <% end %>
 
-
 <% if user_signed_in? %>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="text-center">
-        You are signed in as <%= current_user.username %>
-        <%= link_to 'Add Post', new_post_path %>
-        <%= link_to 'Manage Posts', users_posts_manager_path(current_user) %>
-        <%= link_to 'Manage Comments', users_comments_manager_path(current_user) %>
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 
-        <div class='weather'>
-          <tr>
-            <td>
-              <% boston_current = Weather.boston_conditions %>
-              <%= image_tag(boston_current["icon_url"]) %>
-              <%= boston_current["weather"] %>
-              <%= boston_current["temp_f"] %>
-            </td>
-            <td>
-              <% boston_future = Weather.boston_forecast %>
-              <%= image_tag(boston_future[1]["icon_url"]) %>
-              High: <%= boston_future[1]["high"]["fahrenheit"] %>
-              Low: <%= boston_future[1]["low"]["fahrenheit"] %>
-              <%= boston_future[1]["date"]["weekday"] %>
-            </td>
-            <td>
-              <%= image_tag(boston_future[2]["icon_url"]) %>
-              High: <%= boston_future[2]["high"]["fahrenheit"] %>
-              Low: <%= boston_future[2]["low"]["fahrenheit"] %>
-              <%= boston_future[2]["date"]["weekday"] %>
-            </td>
-          </tr>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Hello, Boston!</h1>
+      <p class="text-right">You are signed in as <%= current_user.username %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      </p>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class='col-md-3 col-md-offset-2'>
+          <% boston_current = Weather.boston_conditions %>
+          <p>Current</p>
+          <%= image_tag(boston_current["icon_url"]) %>
+          <%= boston_current["weather"] %>
+          <%= boston_current["temp_f"] %>
+        </div>
+        <div class='col-md-3'>
+          <% boston_future = Weather.boston_forecast %>
+          <p><%= boston_future[1]["date"]["weekday"] %></p>
+          <%= image_tag(boston_future[1]["icon_url"]) %>
+          High: <%= boston_future[1]["high"]["fahrenheit"] %>
+          Low: <%= boston_future[1]["low"]["fahrenheit"] %>
+        </div>
+        <div class='col-md-3'>
+          <p><%= boston_future[2]["date"]["weekday"] %></p>
+          <%= image_tag(boston_future[2]["icon_url"]) %>
+          High: <%= boston_future[2]["high"]["fahrenheit"] %>
+          Low: <%= boston_future[2]["low"]["fahrenheit"] %>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="text-center">
-        <h1>Post Board</h1>
-        <h3> <%= link_to 'view all posts', posts_path %> </h3>
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class= 'row'>
+        <div class='col-md-5  col-md-offset-1'>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h1>Post Board <%= link_to 'view all posts', posts_path %> </h1>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default"><%= link_to 'Add Post', new_post_path %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Manage Posts', users_posts_manager_path(current_user) %></button>
+                <button type="button" class="btn btn-default"><%= link_to 'Manage Comments', users_comments_manager_path(current_user) %></button>
+              </div><br><br>
+
+                <% @posts.each do |post| %>
+                  <h4><%= link_to post.title, post_comments_path(post) %></h4> <br>
+                  <%= truncate(post.content, length: 200, separator: ' ') %> <br>
+                  <small>Post by: <%= post.user.username %>
+                  Created on: <%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %> <br>
+                  Comments
+                  <%= post.comments.count %></small><br><br>
+                <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-md-6'>
+            <% @pics.map do |pic| %>
+              <td> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "150x150"), pic['link'] %>
+              </td>
+            <% end %>
+        </div>
       </div>
 
       <div class='row'>
-
-        <% @posts.each do |post| %>
-        <div class='col-md-4'>
-          <%= link_to post.title, post_path(post) %><br>
-          <%= truncate(post.content, length: 20, separator: ' ') %> <br>
-          <%= post.user.username %> <br>
-          <%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %> <br>
-          <%= link_to 'Comments', post_comments_path(post) %>
-          <%= post.comments.count %><br><br>
+        <div class='col-md-10 col-md-offset-1'>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h1>Read Some Articles</h1>
+              <% @entry.each do |entry| %>
+                <h4><%= link_to entry.title, entry.url %></h4>
+                <small> <%=entry.summary%> </small> <br>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <% end %>
-
       </div>
-
-      <div class='instagram'>
-        <% @pics.map do |pic| %>
-          <td> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "150x150"), pic['link'] %>
-          </td>
-        <% end %>
-      </div>
-
-      <div class='articles'>
-        <% @entry.each do |entry| %>
-          <li> <%= link_to entry.title, entry.url %> </li>
-          <small> <%=entry.summary%> </small>
-        <% end %>
-      </div>
-    </div>
-   </div>
-    <% end %>
-
+  </div>
 </div>
+<% end %>

@@ -1,23 +1,25 @@
-<div class='my_comments'>
+<div class='container'>
+  <div class="page-header">
+    <h2>My Comments</h2>
+    <button type="button" class="btn btn-default"><%= link_to 'Back to Home', root_path %></button>
+  </div>
 
-<h1>My Comments</h1>
+<div class="row">
+    <div class="col-md-12">
+      <% if @comments.present? == false %>
+        <h3> There are no comments to manage... </h3>
+      <% end %>
 
-<%= link_to 'Back to Homepage', root_path %>
-
-<% if @comments.present? == false %>
-  <p> There are no comments to manage... </p>
-<% end %>
-
-  <ul>
-    <% @comments.each do |comment| %>
-      From Post Title: <%= comment.post.title %><br>
-      <%= link_to '|Edit|', edit_post_comment_path(comment.post_id, comment) %>
-      <%= link_to '|Delete|', post_comment_path(comment.post_id, comment), method: :delete, data: {confirm: 'Are you sure?'} %>
-      <%= comment.content %><br>
-    <% end %>
-
-  </ul>
-
-
-
+      <% @comments.each do |comment| %>
+        <h4>From Post Title: <%= comment.post.title %></h4><br>
+        <div class-'btn-group'>
+          <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_post_comment_path(comment.post_id, comment) %></button>
+          <button type="button" class="btn btn-default"><%= link_to 'Delete', post_comment_path(comment.post_id, comment), method: :delete, data: {confirm: 'Are you sure?'} %></button>
+        <%= comment.content %><br>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
+
