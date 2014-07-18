@@ -4,7 +4,7 @@
     <div class="container">
       <div class='text-center'>
         <h2>Hello, Boston!</h2>
-        <button type="button" class="btn btn-default"><%= link_to 'Please Log In', new_user_session_path %></button>
+        <div class="btn btn-default"><%= link_to 'Please Log In', new_user_session_path %></div>
       </div>
     </div>
   </div>>
@@ -60,9 +60,9 @@
             <div class="panel-body">
               <h1>Post Board <%= link_to 'view all posts', posts_path %> </h1>
               <div class="btn-group">
-                <button type="button" class="btn btn-default"><%= link_to 'Add Post', new_post_path %></button>
-                <button type="button" class="btn btn-default"><%= link_to 'Manage Posts', users_posts_manager_path(current_user) %></button>
-                <button type="button" class="btn btn-default"><%= link_to 'Manage Comments', users_comments_manager_path(current_user) %></button>
+                <div class="btn btn-default"><%= link_to 'Add Post', new_post_path %></div>
+                <div class="btn btn-default"><%= link_to 'Manage Posts', users_posts_manager_path(current_user) %></div>
+                <div type="button" class="btn btn-default"><%= link_to 'Manage Comments', users_comments_manager_path(current_user) %></div>
               </div><br><br>
 
                 <% @posts.each do |post| %>

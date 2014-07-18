@@ -1,7 +1,7 @@
 <div class='container'>
   <div class="page-header">
     <h2>My Comments</h2>
-    <button type="button" class="btn btn-default"><%= link_to 'Back to Home', root_path %></button>
+    <div class="btn btn-default"><%= link_to 'Back to Home', root_path %></div>
   </div>
 
 <div class="row">
@@ -13,8 +13,8 @@
       <% @comments.each do |comment| %>
         <h4>From Post Title: <%= comment.post.title %></h4><br>
         <div class-'btn-group'>
-          <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_post_comment_path(comment.post_id, comment) %></button>
-          <button type="button" class="btn btn-default"><%= link_to 'Delete', post_comment_path(comment.post_id, comment), method: :delete, data: {confirm: 'Are you sure?'} %></button>
+          <div class="btn btn-default"><%= link_to 'Edit', edit_post_comment_path(comment.post_id, comment) %></div>
+          <div class="btn btn-default"><%= link_to 'Delete', post_comment_path(comment.post_id, comment), method: :delete, data: {confirm: 'Are you sure?'} %></div>
         <%= comment.content %><br>
       <% end %>
     </div>
