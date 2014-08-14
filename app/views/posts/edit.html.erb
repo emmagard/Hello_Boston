@@ -1,16 +1,4 @@
 <div class='text-center'>
-
   <h2>Edit Your Post!</h2>
-  <% if user_signed_in? %>
-
-    <%= form_for @post do |f| %>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %><br>
-    <%= f.label :content %><br>
-    <%= f.text_area :content %><br><br>
-    <%= f.submit %>
-
-    <% end %>
-
-  <% end %>
+  <%= render 'shared/post_form' %>
 </div>
