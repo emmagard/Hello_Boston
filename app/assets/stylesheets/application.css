@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+
+body h1 {
+  font-family: 'Nunito', sans-serif;
+}
+
+h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+}
+
+#jumbotron{
+  margin-bottom: 20px;
+}
+
+.insta-image {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.insta-image img{
+  border-radius: 5px;
+}
+
+.insta-image img:hover{
+  opacity: 0.4;
+}
+
+#pics, #posts{
+  height: 635px;
+}
+
+#footer{
+  padding-top: 70px;
+  padding-bottom: 50px;
+  background-color: #eee;
+  border-radius: 6px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+}

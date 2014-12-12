@@ -1,6 +1,6 @@
 <% if user_signed_in? == false %>
 
-  <div class="jumbotron">
+  <div class="jumbotron" id="jumbotron">
     <div class="container">
       <div class='text-center'>
         <h2>Hello, Boston!</h2>
@@ -52,13 +52,10 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-
-      <div class= 'row'>
-        <div class='col-md-5  col-md-offset-1'>
-          <div class="panel panel-default">
+        <div class='col-md-6'>
+          <div class="panel panel-default" id='posts'>
             <div class="panel-body">
-              <h1>Post Board <%= link_to 'view all posts', posts_path %> </h1>
+              <h1>Post Board <%= link_to 'view all posts', posts_path %> </h1><br>
               <div class="btn-group">
                 <div class="btn btn-default"><%= link_to 'Add Post', new_post_path %></div>
                 <div class="btn btn-default"><%= link_to 'Manage Posts', users_posts_manager_path(current_user) %></div>
@@ -66,7 +63,7 @@
               </div><br><br>
 
                 <% @posts.each do |post| %>
-                  <h4><%= link_to post.title, post_comments_path(post) %></h4> <br>
+                  <h4><%= link_to post.title, post_comments_path(post) %></h4>
                   <%= truncate(post.content, length: 200, separator: ' ') %> <br>
                   <small>Post by: <%= post.user.username %>
                   Created on: <%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %> <br>
@@ -78,15 +75,19 @@
         </div>
 
         <div class='col-md-6'>
+          <div class="panel panel-default" id='pics'>
+            <div class='panel-body'>
             <% @pics.map do |pic| %>
-              <td> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "150x150"), pic['link'] %>
-              </td>
+              <div class='col-md-4 insta-image'> <%= link_to image_tag(pic['images']['standard_resolution']['url'], size: "150x150"), pic['link']%>
+              </div>
             <% end %>
+            </div>
+          </div>
         </div>
-      </div>
+</div>
 
       <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
+        <div class='col-md-12'>
           <div class="panel panel-default">
             <div class="panel-body">
               <h1>Read Some Articles</h1>
@@ -98,6 +99,15 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="footer">
+            <p>Built by Emma Gardner • General Assembly-WDI June 2014</p>
+        </div>
+      </div>
   </div>
+  </div>
+
+
 </div>
 <% end %>
