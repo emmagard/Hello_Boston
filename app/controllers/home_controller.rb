@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @feed = Feedjira::Feed.fetch_and_parse feed_url
     @entry = @feed.entries.values_at(0...5)
     @pics = Instagram.tag_recent_media('boston').values_at(0...9)
-    @posts = Post.limit(3).order(created_at: :desc)
+    @posts = Post.limit(4).order(created_at: :desc)
     @post = Post.find_by(params[:id])
 
   end

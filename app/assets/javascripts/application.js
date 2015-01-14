@@ -17,7 +17,7 @@
 
 $(document).ready(function(){
 
-  $('form').submit(function(evt){
+  $('#new_comment').submit(function(evt){
     event.preventDefault();
     var url = $(this).attr('action');
     var formData = $('form').serialize();

@@ -64,7 +64,7 @@
 
                 <% @posts.each do |post| %>
                   <h4><%= link_to post.title, post_comments_path(post) %></h4>
-                  <%= truncate(post.content, length: 200, separator: ' ') %> <br>
+                  <%= truncate(post.content, length: 50, separator: ' ') %> <br>
                   <small>Post by: <%= post.user.username %>
                   Created on: <%= post.created_at.strftime("%m/%d/%Y %I:%M %p") %> <br>
                   Comments
