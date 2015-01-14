@@ -45,6 +45,10 @@ h2 {
   height: 635px;
 }
 
+.comment_block small{
+  color: #428bca;
+}
+
 #footer{
   padding-top: 70px;
   padding-bottom: 50px;
