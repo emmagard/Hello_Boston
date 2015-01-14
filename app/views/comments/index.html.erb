@@ -9,17 +9,32 @@
 
 
       <p><%= @post.content %></p> <br><br>
-      <div class="btn btn-default"><%= link_to 'Add Comment', new_post_comment_path %></div><br><br>
+
 
       <% if @comments.present? == false %>
         <h3> there's no comments here yet. write a comment </h3>
       <% end %>
 
-      <ul>
+      <h2>Add a Comment!</h2>
+
+      <% if user_signed_in? %>
+        <%= form_for @comment, url: post_comments_path(@post) do |f| %>
+          <%= f.label :content, 'Your Comment' %><br>
+          <%= f.text_area :content, cols: 100 %><br><br>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.hidden_field :post_id, :value => @post.id %>
+          <%= f.submit 'Submit Comment', id: 'submit_comment'%>
+        <% end %>
+      <% end %>
+      <br>
+
+      <ul id= "comment_list">
         <% @comments.each do |comment| %>
-          <li><%= comment.content %></li><br>
-          <small>Comment from: <%= comment.user.username %> Created on: <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %>
-          </small><br><br>
+          <div class="comment_block">
+            <li><%= comment.content %></li><br>
+            <small>Comment from: <%= comment.user.username %> Created on: <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+            </small><br><br>
+          </div>
         <% end %>
       </ul>
     </div>

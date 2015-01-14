@@ -4,6 +4,12 @@ class CommentsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments
+    @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new
@@ -20,7 +26,7 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(@post)
     else
       flash[:notice] = "Your Comment Did not Save"
-      render :new
+      render :index
     end
   end
 
