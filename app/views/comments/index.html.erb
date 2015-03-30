@@ -1,20 +1,17 @@
 <div class='container'>
+
   <div class="page-header">
     <h2>Post: <%= @post.title %></h2>
-    <div class="btn btn-default"><%= link_to 'Back to Homepage', root_path %></div>
+    <div class="btn btn-default"><%=link_to 'Back to Homepage', root_path %></div>
     <div class="btn btn-default"><%=link_to 'Back to All Posts', posts_path%></div>
   </div>
+
   <div class="row">
     <div class="col-md-12">
-
-
       <p><%= @post.content %></p> <br><br>
-
-
       <% if @comments.present? == false %>
         <h3> there's no comments here yet. write a comment </h3>
       <% end %>
-
       <h2>Add a Comment!</h2>
 
       <% if user_signed_in? %>
@@ -37,6 +34,8 @@
           </div>
         <% end %>
       </ul>
+
     </div>
-  </div>
-</div>
+  </div><!-- row -->
+
+</div><!-- container -->

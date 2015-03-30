@@ -23,6 +23,7 @@ $(document).ready(function(){
     var formData = $('form').serialize();
 
     $.post(url, formData, function(response){
+      console.log(response);
       var newComment = $(response).find('#comment_list').children().last();
 
       $('#comment_list').append(newComment.html());
