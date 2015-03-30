@@ -15,21 +15,3 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
-
-  $('#new_comment').submit(function(evt){
-    event.preventDefault();
-    var url = $(this).attr('action');
-    var formData = $('form').serialize();
-
-    $.post(url, formData, function(response){
-      console.log(response);
-      var newComment = $(response).find('#comment_list').children().last();
-
-      $('#comment_list').append(newComment.html());
-      $('#comment_content').val('');
-    }); // end post
-
-  }); // end submit
-
-}); // end ready
