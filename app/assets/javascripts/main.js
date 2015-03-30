@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  console.log("js works!");
+   console.log("js works!");
 
   $('#new_comment').submit(function(evt){
     event.preventDefault();
@@ -9,9 +9,9 @@ $(document).ready(function(){
     console.log(formData);
     $.post(url, formData, function(response){
       console.log(response);
-      var newComment = $(response).find('#comment_list').children().last();
+      var newComment = $(response).find('#comment_list').children().first();
 
-      $('#comment_list').prepend(newComment.html());
+      $('#comment_list').prepend(newComment);
       $('#comment_content').val('');
     }); // end post
 
