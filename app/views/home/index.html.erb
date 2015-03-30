@@ -1,15 +1,16 @@
 <% if user_signed_in? == false %>
 
-  <div class="jumbotron" id="jumbotron">
-    <div class="container">
-      <div class='text-center'>
-        <h2>Hello, Boston!</h2>
-        <div class="btn btn-default"><%= link_to 'Please Log In', new_user_session_path %></div>
+    <div id= "not-signed-in-home">
+      <div id= "intro">
+        <h1>Hello, Boston!</h1>
+        <p>Check the weather, see photos, and read or write about all things Boston.  </p>
+        <div class="btn btn-default btn-lg"><%= link_to 'Log In', new_user_session_path %></div>
+        <div class="btn btn-default btn-lg"><%= link_to 'New Account', new_user_registration_path%></div>
       </div>
     </div>
-  </div>>
-  <div class='text-center'><%=image_tag('http://i.imgur.com/ZcJmC0Z.jpg', size: '600x600')%>
-  </div>
+
+
+
 <% end %>
 
 <% if user_signed_in? %>
