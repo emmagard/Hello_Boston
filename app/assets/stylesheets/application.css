@@ -62,14 +62,23 @@ h2 {
   position: absolute;
 }
 
-#sign-in-panel{
+#sign-in-panel,
+#sign-up-panel{
   width:25%;
   margin:15% auto;
 }
 
-.panel-body.sign-in-content{
+.panel-body.sign-in-content,
+.panel-body.sign-up-content{
   padding: 20px 40px;
   text-align: left;
+}
+
+#sign-up{
+  background-color: #e7f4fe;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 #jumbotron{
@@ -94,8 +103,12 @@ h2 {
   height: 635px;
 }
 
-.comment_block small{
-  color: #428bca;
+#comment_list{
+  list-style: none;
+}
+
+div.panel-footer{
+  background-color: #e7f4fe;
 }
 
 #footer{

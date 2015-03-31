@@ -1,25 +1,35 @@
-<div class='text-center'>
 
-  <h2>Sign up</h2>
+<div id= "sign-up">
+  <div id="sign-up-panel">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">New Account</h3>
+      </div>
+      <div class="panel-body sign-up-content">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+      <div><%= f.label :username %><br />
+      <%= f.text_field :username, autofocus: true, :size => 35 %></div>
 
-    <div><%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %></div>
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, :size => 35 %></div>
 
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %></div>
+      <div><%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", :size => 35 %></div>
 
-    <div><%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %></div>
+      <div><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", :size => 35 %></div>
+      <br>
+      <div><%= f.submit "Submit New Account", :class => "btn" %>
+        <%= link_to 'Log In', new_user_session_path, :class => "btn btn-default" %>
+      </div>
+    <% end %>
 
-    <div><%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-    <div><%= f.submit "Sign up" %></div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-
+      </div>
+    </div>
+  </div>
 </div>
+
+
+

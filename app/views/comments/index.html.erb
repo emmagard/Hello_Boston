@@ -7,35 +7,43 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
       <p><%= @post.content %></p> <br><br>
       <% if @comments.present? == false %>
         <h3> there's no comments here yet. write a comment </h3>
       <% end %>
       <h2>Add a Comment!</h2>
+    </div>
+  </div><!-- row -->
 
+  <div class="row">
+    <div class="col-md-8">
       <% if user_signed_in? %>
         <%= form_for @comment, url: post_comments_path(@post) do |f| %>
           <%= f.label :content, 'Your Comment' %><br>
           <%= f.text_area :content, cols: 100 %><br><br>
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <%= f.hidden_field :post_id, :value => @post.id %>
-          <%= f.submit 'Submit Comment', id: 'submit_comment'%>
+          <%= f.submit 'Submit Comment', id: 'submit_comment', class: 'btn'%>
         <% end %>
       <% end %>
       <br>
 
       <ul id= "comment_list">
         <% @comments.each do |comment| %>
-          <div class="comment_block">
-            <li><%= comment.content %></li><br>
-            <small>Comment from: <%= comment.user.username %> Created on: <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %>
-            </small><br><br>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <li><%= comment.content %></li>
+            </div>
+            <div class="panel-footer">
+              <small>Comment from: <%= comment.user.username %> Created on: <%= comment.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+              </small>
+            </div>
           </div>
         <% end %>
       </ul>
-
     </div>
   </div><!-- row -->
+
 
 </div><!-- container -->
