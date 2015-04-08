@@ -1,1 +1,0 @@
-"Hello, Boston" is a community website for the city. There is a posting board for memebers to talk amongst themselves, a photo area that streams in instagram photos that are tagged with boston, an articles section, and a little weather to round things out. Sign-in or sign-up on the homepage to get started.
